@@ -54,31 +54,18 @@ jobs:
         uses: snyk/actions/setup@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Snyk Monitor  
-        run: snyk monitor || true
+          
+      - name: Open Source Monitor  
+        run: snyk monitor --all-projects || true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          
       - name: Code Test  
         run: snyk code test -d --sarif > snyk-code.sarif || true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
-        # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
-        # Use || true to not fail the pipeline
-     # - name: Snyk Code test
-     #   run: snyk code test -d --sarif > snyk-code.sarif || true
-     #   env:
-     #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
-        # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
-     # - name: Snyk Open Source monitor
-     #   run: snyk monitor -d --all-projects
-     #   env:
-     #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
-        # Runs Snyk Infrastructure as Code (IaC) analysis and uploads result to Snyk.
-        # Use || true to not fail the pipeline.
-      - name: Snyk IaC test and report
+          
+      - name: IaC Test  
         run: snyk iac test -d --report || true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
