@@ -38,8 +38,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install NPM
-        run: npm install --loglevel=error
 
       - name: Set up Snyk CLI to check for security issues
         # Snyk can be used to break the build when it detects security issues.
@@ -54,6 +52,8 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
         # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
+      - name: Install NPM
+        run: npm install --loglevel=error
       - name: Snyk Open Source monitor
         run: snyk monitor -d --all-projects
         env:
