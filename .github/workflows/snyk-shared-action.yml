@@ -1,0 +1,15 @@
+name: Snyk Pipenv Monitor
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  monitor:
+    uses: yangpulse-snyk/snyk-shared-action/.github/workflows/snyk-pipenv-monitor.yml@main
+    with:
+      SNYK_ORG: e7af3cb3-3579-465d-bbb5-305eb61cedc9
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
