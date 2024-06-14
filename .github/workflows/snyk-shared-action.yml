@@ -8,7 +8,7 @@ on:
 
 jobs:
   monitor:
-    uses: yangpulse-snyk/snyk-shared-action/.github/workflows/snyk-pipenv-monitor.yml@main
+    uses: yangpulse-snyk/snyk-shared-action/.github/workflows/snyk-node-shared-action.yml@main
     with:
       SNYK_ORG: e7af3cb3-3579-465d-bbb5-305eb61cedc9
     secrets:
