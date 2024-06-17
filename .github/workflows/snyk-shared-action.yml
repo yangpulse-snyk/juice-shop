@@ -1,4 +1,4 @@
-name: Snyk Pipenv Monitor
+name: Snyk Scan (External Shared Action)
 
 on:
   push:
